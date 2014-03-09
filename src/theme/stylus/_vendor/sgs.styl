@@ -1,0 +1,92 @@
+// SGS - Semantic Grid Stylus
+// by Diogo Moretti
+// https://github.com/diogomoretti/sgs
+// Based on Semantic.gs
+
+// SGS config
+columns      = 12
+column-width = 60px
+gutter-width = 0
+size-container = 1040px
+
+// Device media queries
+desktop-container = "(max-width: " + size-container + ")"
+tablet = "(min-width: 780px) and (max-width: 979px)"
+phone  = "(max-width: 779px)"
+
+// Box-sizing
+*, *:before, *:after
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+ 
+// Device specific mixins
+hideOn(device)
+  display: inherit
+  @media device
+    display: none !important
+ 
+showOn(device)
+  display: none
+  @media device
+    display: inherit !important
+
+// Set @total-width to 100% for a fluid layout
+total-width = 100%
+
+// Correcting percentage-to-pixel rounding errors in IE6 & 7
+// See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
+// Override @min with the minimum width of your layout
+min-width = 960
+correction = (((0.5 / min-width) * 100) * 1%)
+
+// Utility variable — you should never need to modify this
+_gridsystem-width = (column-width + gutter-width) * columns
+
+// The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+clearfix()
+ *zoom:1
+
+  &:before,
+  &:after
+    content:""
+    display:table
+
+  &:after
+    clear:both
+
+
+//////////
+// GRID //
+//////////
+
+body
+  width 100%
+  clearfix()
+
+container()
+  display: table
+  max-width: size-container
+  width: 100%
+  margin: 0 auto
+  @media desktop-container
+    padding: 0 1em
+
+row(columns = columns)
+  display block
+  width total-width * ((gutter-width + _gridsystem-width ) / _gridsystem-width)
+  margin 0 total-width * (((gutter-width * 0.5) / _gridsystem-width ) * - 1)
+  *width total-width * ((gutter-width + _gridsystem-width ) / _gridsystem-width)-correction
+  *margin 0 total-width * (((gutter-width * 0.5) / _gridsystem-width ) * - 1)-correction
+
+column(x, columns = columns)
+  display inline
+  float left
+  overflow hidden
+  width total-width * ((((gutter-width + column-width ) * x) - gutter-width) / _gridsystem-width)
+  margin 0 total-width * ( (gutter-width * 0.5) / _gridsystem-width)
+  *width total-width * ((((gutter-width + column-width ) * x) - gutter-width) / _gridsystem-width)-correction
+  *margin 0 total-width * ( (gutter-width * 0.5) / _gridsystem-width)-correction
+
+offset(offset = 1)
+  margin-left total-width*(((gutter-width+column-width)*offset + (gutter-width*0.5))/_gridsystem-width)

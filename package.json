@@ -1,0 +1,50 @@
+{
+  "name": "whoyouare",
+  "description": "Brazilian Pearl Jam fans.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/diogomoretti/whoyouare",
+  "author": {
+    "name": "Diogo Moretti",
+    "url": "http://github.com/diogomoretti/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/diogomoretti/whoyouare.git"
+  },
+  "bugs": {
+    "url": "https://github.com/diogomoretti/whoyouare/issues"
+  },
+  "engines": {
+    "node": ">=0.8"
+  },
+  "scripts": {
+    "test": "grunt assemble"
+  },
+  "devDependencies": {
+    "assemble": "~0.4.33",
+    "grunt": "~0.4.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-connect": "~0.6.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "load-grunt-tasks": "~0.2.1",
+    "time-grunt": "~0.2.7",
+    "assemble-contrib-permalinks": "*",
+    "assemble-contrib-sitemap": "*",
+    "grunt-contrib-stylus": "^0.13.2",
+    "grunt-contrib-concat": "^0.3.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/diogomoretti/whoyouare/blob/master/LICENSE-MIT"
+    }
+  ],
+  "keywords": [
+    "assemble",
+    "templates",
+    "handlebars",
+    "site generator",
+    "site builder",
+    "grunt"
+  ]
+}
