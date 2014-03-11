@@ -201,27 +201,115 @@ body *zoom:1:after {
 body *zoom:1:after {
   clear: both;
 }
-.pushy {
-  width: 400px;
+/*! Pushy - v0.9.1 - 2013-9-16
+* Pushy is a responsive off-canvas navigation menu using CSS transforms & transitions.
+* https://github.com/christophery/pushy/
+* by Christopher Yee */
+
+/* Menu Appearance */
+
+.pushy{
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    top: 0;
+    z-index: 9999;
+    background: #333332;
+    font-size: 0.9em;
+    font-weight: bold;
+    -webkit-box-shadow: inset -10px 0 6px -9px rgba(0, 0, 0, .7);
+    -moz-box-shadow: inset -10px 0 6px -9px rgba(0, 0, 0, .7);
+    box-shadow: inset -10px 0 6px -9px rgba(0, 0, 0, .7);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; /* enables momentum scrolling in iOS overflow elements */
 }
-.pushy-left {
-  -webkit-transform: translate3d(-400px, 0, 0);
-  -moz-transform: translate3d(-400px, 0, 0);
-  -o-transform: translate3d(-400px, 0, 0);
-  -ms-transform: translate3d(-400px, 0, 0);
-  transform: translate3d(-400px, 0, 0);
+
+.pushy a{
+    display: block;
+    color: #b3b3b1;
+    padding: 15px 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    text-decoration: none;
 }
-.container-push,
-.push-push {
-  -webkit-transform: translate3d(400px, 0, 0);
-  -moz-transform: translate3d(400px, 0, 0);
-  -o-transform: translate3d(400px, 0, 0);
-  -ms-transform: translate3d(400px, 0, 0);
-  transform: translate3d(400px, 0, 0);
+
+.pushy a:hover{
+    background: #00b4ff;
+    color: #FFF;
+}
+
+/* Menu Movement */
+
+.pushy-left{
+    -webkit-transform: translate3d(-200px,0,0);
+    -moz-transform: translate3d(-200px,0,0);
+    -ms-transform: translate3d(-200px,0,0);
+    -o-transform: translate3d(-200px,0,0);
+    transform: translate3d(-200px,0,0);
+}
+
+.pushy-open{
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+.container-push, .push-push{
+    -webkit-transform: translate3d(200px,0,0);
+    -moz-transform: translate3d(200px,0,0);
+    -ms-transform: translate3d(200px,0,0);
+    -o-transform: translate3d(200px,0,0);
+    transform: translate3d(200px,0,0);
+}
+
+/* Menu Transitions */
+
+.pushy, #container, .push{
+    -webkit-transition: -webkit-transform .2s cubic-bezier(.16, .68, .43, .99);
+    -moz-transition: -moz-transform .2s cubic-bezier(.16, .68, .43, .99);
+    -o-transition: -o-transform .2s cubic-bezier(.16, .68, .43, .99);
+    transition: transform .2s cubic-bezier(.16, .68, .43, .99);
+    /* improves performance issues on mobile*/
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+}
+
+/* Site Overlay */
+
+.site-overlay{
+    display: none;
+}
+
+.pushy-active .site-overlay{
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 200px;
+    z-index: 9999;
+}
+
+/* Example Media Query */
+
+@media screen and (max-width: 768px){
+    .pushy{
+        font-size: 1.0em;
+    }
 }
 body {
   background: #ccc;
   font-size: 62.5%;
+}
+::selection {
+  color: #00b4ff;
+  background: #333;
+}
+::-moz-selection {
+  color: #fff;
+  background: #00b4ff;
 }
 .container {
   display: table;
@@ -233,6 +321,20 @@ body {
   .container {
     padding: 0 1em;
   }
+}
+p {
+  font-size: 1.3em;
+  line-height: 1.6em;
+  font-family: 'Arial', helvetica, sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.6em;
+  font-family: 'Roboto', Arial, helvetica, sans-serif;
 }
 .header {
   background: #222;
@@ -258,13 +360,142 @@ body {
   *margin: 0 0% -correction;
   text-align: center;
 }
+.menu-btn {
+  border: 1px solid #666;
+  padding: 0.4em;
+  color: #fff;
+  display: inline-block;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  color: #666;
+  margin: 0.5em 0;
+  cursor: pointer;
+}
+.menu-btn .menu-btn-icon {
+  display: inline-block;
+  margin-right: 0.4em;
+}
+.menu-btn:hover {
+  border-color: #fff;
+  color: #fff;
+}
+.pushy > ul {
+  padding: 0;
+  margin: 0;
+}
+.pushy > ul a {
+  font-size: 1.3em;
+}
 .logo-item {
   display: block;
-  max-width: 5em;
+  max-width: 4.8em;
   height: 4em;
   margin: 0.4em auto;
   background: url("../img/wya-logo.svg") left top no-repeat;
   -webkit-background-size: 100% auto;
   -moz-background-size: 100% auto;
   background-size: 100% auto;
+}
+.btn {
+  display: inline-block;
+  border: 2px solid #d2d2d2;
+  color: #d2d2d2;
+  font-family: 'Roboto', Arial, helvetica, sans-serif;
+  font-size: 1.8em;
+  padding: 0.6em 1em;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 1.8em 0 0 0;
+  letter-spacing: 0.04em;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.btn:hover {
+  border-color: #fff;
+  color: #fff;
+}
+.banner-home {
+  position: relative;
+  overflow: auto;
+}
+.banner-home h1 {
+  color: #fff;
+  font-size: 7em;
+  font-weight: 900;
+  margin: 1.5em 0 0 0;
+  letter-spacing: -0.02em;
+  line-height: 1.3em;
+  text-shadow: 0 3px 0 #000;
+}
+.banner-home p {
+  color: #ddd;
+  font-size: 1.6em;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+.banner-home li {
+  list-style: none;
+}
+.banner-home ul {
+  margin: 0;
+  padding: 0;
+}
+.banner-home ul li {
+  float: left;
+  min-height: 400px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+@media (max-width: 779px) {
+  .banner-home ul li {
+    height: 250px;
+    min-height: 250px;
+  }
+}
+@media (min-width: 780px) and (max-width: 979px) {
+  .banner-home ul li {
+    height: 350px;
+    min-height: 350px;
+  }
+}
+.banner-home .dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.banner-home .dots li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  text-indent: -999em;
+  border: 2px solid #fff;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.4;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  filter: alpha(opacity=40);
+  -webkit-transition: background 0.5s, opacity 0.5s;
+  -moz-transition: background 0.5s, opacity 0.5s;
+  -o-transition: background 0.5s, opacity 0.5s;
+  -ms-transition: background 0.5s, opacity 0.5s;
+  transition: background 0.5s, opacity 0.5s;
+}
+.banner-home .dots li.active {
+  background: #fff;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
 }

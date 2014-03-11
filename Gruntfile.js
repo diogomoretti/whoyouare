@@ -29,6 +29,10 @@ module.exports = function(grunt) {
                 files: ['<%= config.src %>/<%= config.theme %>/stylus/**/*.styl'],
                 tasks: ['stylus']
             },
+            js: {
+                files: ['<%= config.src %>/<%= config.theme %>/js/**/*.js'],
+                tasks: ['concat']
+            },
             livereload: {
                 options: {
                     livereload: '<%= connect.options.livereload %>'
@@ -42,16 +46,18 @@ module.exports = function(grunt) {
             }
         },
 
+        // TASK: Concat js files
         concat: {
             options: {
                 separator: ';',
             },
             dist: {
                 src: [
-                    '<%= config.dist %>/<%= config.theme %>/js/vendor/pushy.min.js',
-                    '<%= config.dist %>/<%= config.theme %>/js/app.js'
+                    '<%= config.src %>/<%= config.theme %>/js/vendor/pushy.min.js',
+                    '<%= config.src %>/<%= config.theme %>/js/vendor/unslider.min.js',
+                    '<%= config.src %>/<%= config.theme %>/js/app.js'
                 ],
-                dest: '<%= config.dist %>/js/all.js',
+                dest: '<%= config.dist %>/assets/js/all.js',
             },
         },
 
@@ -88,13 +94,16 @@ module.exports = function(grunt) {
 
         // TASK: Assemble
         assemble: {
+            options: {
+                helpers: ['<%= config.src %>/helpers/*.js']
+            },
             pages: {
                 options: {
                     flatten: true,
                     assets: '<%= config.dist %>/assets',
                     layout: '<%= config.src %>/templates/layouts/default.hbs',
                     data: '<%= config.src %>/data/*.{json,yml}',
-                    partials: '<%= config.src %>/templates/partials/*.hbs',
+                    partials: '<%= config.src %>/templates/partials/**/*.hbs',
                     plugins: ['assemble-contrib-permalinks','assemble-contrib-sitemap'],
                 },
                 files: {
@@ -104,7 +113,10 @@ module.exports = function(grunt) {
         },
 
         // TASK: Clean 'dist' folder
-        clean: ['<%= config.dist %>/**/*.{html,xml}']
+        clean: [
+            '<%= config.dist %>/**/*.{html,xml}',
+            '<%= config.dist %>/assets/js/all.js'
+        ]
 
     });
     
@@ -118,6 +130,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('server', [
         'clean',
+        'concat',
+        'stylus',
         'assemble',
         'connect:livereload',
         'watch'
