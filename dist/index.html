@@ -20,12 +20,14 @@
 <!-- Pushy Menu -->
 <nav class="pushy pushy-left">
     <ul>
-        <li><a href="#">Item 1</a></li>
-        <li><a href="#">Item 2</a></li>
-        <li><a href="#">Item 3</a></li>
-        <li><a href="#">Item 4</a></li>
-        <li><a href="#">Item 5</a></li>
-        <li><a href="#">Item 6</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Artworks</a></li>
+        <li><a href="#">Specials</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Posters</a></li>
+        <li><a href="#">Tour</a></li>
+        <li><a href="#">Contact</a></li>
     </ul>
 </nav>
 
@@ -37,26 +39,27 @@
             
 
 <header class="header">
-	
     <div class="container">
         <div class="header-menu">
         	<div class="menu-btn"><span class="menu-btn-icon">&#9776;</span>Menu</div>
         </div>
         <div class="header-logo">
-        	<a href="#" class="logo-item"></a>
+        	<a href="/" class="logo-item"></a>
         </div>
-        <div class="header-social"><span style="color: #fff">Lorem Ipsum</span></div>
+        <div class="header-social">
+            <a href="#" class="header-social-link fa fa-facebook-square"></a>
+            <a href="#" class="header-social-link fa fa-twitter-square"></a>
+        </div>
     </div>
-
 </header>
 
             
 <div class="banner-home">
     <ul>
         <li style="background-image: url(assets/img/cover/vedder-solo.jpg);">
-            <h1>Vedder Tour 2014</h1>
-            <p>Saiba tudo sobre a primeira turnê do Eddie no Brasil</p>
-            <a href="#" class="btn">Veja especial</a>
+            <h1 class="header-title">Vedder Tour 2014</h1>
+            <p class="header-description">Saiba tudo sobre a primeira turnê do Eddie no Brasil</p>
+            <a href="vedder2014" class="btn">Veja especial</a>
         </li>
         <!--<li style="background-image: url(http://unslider.com/img/wood.jpg);">This is another slide.</li>
         <li style="background-image: url(http://unslider.com/img/subway.jpg);">This is a final slide.</li>-->
@@ -65,7 +68,28 @@
 
 
 
-<h1>TESTE</h1>
+<section class="section section-type-artworks">
+    <div class="container">
+        <h1 class="section-title"><span>Artworks 2013</span></h1>
+        <ul class="artworks-list">
+            <li class="artworks-item">
+                <img src="assets/img/thumbs/artworks/2013/audio/worcester1.jpg" alt="">
+            </li>
+            <li class="artworks-item">
+                <img src="assets/img/thumbs/artworks/2013/audio/worcester1.jpg" alt="">
+            </li>
+            <li class="artworks-item">
+                <img src="assets/img/thumbs/artworks/2013/audio/worcester1.jpg" alt="">
+            </li>
+            <li class="artworks-item">
+                <img src="assets/img/thumbs/artworks/2013/audio/worcester1.jpg" alt="">
+            </li>
+        </ul>
+        <div class="center-content">
+            <a href="#" class="btn btn-more">Veja todas</a>
+        </div>
+    </div>
+</section>
 
 <ul class="people-list"> 
     
@@ -75,6 +99,8 @@
     
 </ul>
         </div>
+
+        <div class="footer"></div>
 
         <!-- JS -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

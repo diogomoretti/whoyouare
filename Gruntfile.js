@@ -22,7 +22,10 @@ module.exports = function(grunt) {
         // TASK: Watch
         watch: {
             assemble: {
-                files: ['<%= config.src %>/{content,data,templates}/{,*/}*.{md,hbs,yml}'],
+                files: [
+                    '<%= config.src %>/{content,data,templates}/{,*/}*.{md,hbs,yml}',
+                    '<%= config.src %>/partials/**/*.{md,hbs,yml}'
+                ],
                 tasks: ['assemble']
             },
             css: {
@@ -95,7 +98,10 @@ module.exports = function(grunt) {
         // TASK: Assemble
         assemble: {
             options: {
-                helpers: ['<%= config.src %>/helpers/*.js']
+                helpers: ['<%= config.src %>/helpers/*.js'],
+                permalinks: {
+                    preset: 'pretty'
+                }
             },
             pages: {
                 options: {

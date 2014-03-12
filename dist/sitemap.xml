@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/diogomoretti/whoyouare/dist/blog.html</loc>
-    <lastmod>2014-03-11T01:50:39.633Z</lastmod>
+    <loc>https://github.com/diogomoretti/whoyouare/dist/index.html</loc>
+    <lastmod>2014-03-12T00:57:44.203Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://github.com/diogomoretti/whoyouare/dist/index.html</loc>
-    <lastmod>2014-03-11T01:50:39.634Z</lastmod>
+    <loc>https://github.com/diogomoretti/whoyouare/dist/vedder2014/index.html</loc>
+    <lastmod>2014-03-12T00:57:44.204Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

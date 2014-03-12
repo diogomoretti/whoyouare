@@ -1,7 +1,8 @@
 // Base
 body
-  background: #ccc
+  background: #f6f6f6
   font-size: 62.5%
+  font-family: font-title
 
 ::selection
   color: color-comp
@@ -15,15 +16,69 @@ body
 .container
   container()
 
+.center-content
+  text-align: center
+
 // Fonts
 p
-  font-size: 1.3em
+  font-size: 1.4em
   line-height: 1.6em
-  font-family: font-base
+  font-family: font-title
+  color: color-font
+  font-weight: 300
+  margin: 0
+  a
+    color: #000
+    border-bottom: 1px solid #ccc
+    text-decoration: none
+
+strong
+  font-weight: bold
+
+em
+  font-style: oblique
 
 h1, h2, h3, h4, h5, h6
   line-height: 1.6em
   font-family: font-title
+  color: color-primary
+  margin: 0
+
+h1
+  font-size: 4.6em
+
+h2
+  font-size: 4em
+
+h3
+  font-size: 3.6em
+
+h4
+  font-size: 3em
+  @media tablet
+    font-size: 2.4em
+  @media phone
+    font-size: 2em
+
+h5
+  font-size: 2.4em
+
+h6
+  font-size: 1.8em
+
+
+// Custom grid
+.col4
+  column(4)
+  @media phone
+    column(12)
+    margin-bottom: 2em
+
+.col6
+  column(6)
+  @media phone
+    column(12)
+    margin-bottom: 2em
 
 // Header
 .header
@@ -31,11 +86,24 @@ h1, h2, h3, h4, h5, h6
   height: 4em
 
 .header-menu, .header-social
-  column(2)
+  column(3)
 
 .header-logo
-  column(8)
+  column(6)
   text-align: center
+
+.header-social
+  text-align: right
+  padding: .6em 0 0 0
+
+.header-social-link
+  font-size: 2.7em
+  text-decoration: none
+  transition: all .2s ease
+  margin-left: .1em
+  color: #666
+  &:hover
+    color: color-comp
 
 .menu-btn
   border: 1px solid darken(color-secondary, 40%)
@@ -59,7 +127,11 @@ h1, h2, h3, h4, h5, h6
     padding: 0
     margin: 0
     a
-      font-size: 1.3em
+      font-size: 1.6em
+      font-family: font-base
+
+.internal-box
+  background: #f6f6f6
 
 .logo-item
   display: block
@@ -83,27 +155,109 @@ h1, h2, h3, h4, h5, h6
   margin: 1.8em 0 0 0
   letter-spacing: 0.04em
   transition: all .2s ease
+  @media phone
+    font-size: 1.3em
+  @media tablet
+    font-size: 2em
   &:hover
     border-color: #fff
     color: #fff
+  &.btn-more
+    border: none
+    background: color-primary
+    color: #fff
+    &:hover
+      background: color-comp
+  &.btn-go
+    font-size: 1.2em
+    border: none
+    background: color-comp
+    color: color-primary
+    &:hover
+      background: color-primary
+      color: #fff
 
+// Header
+.header-title
+  color: #fff
+  font-size: 7em
+  font-weight: 900
+  margin: 1.2em 0 0 0
+  letter-spacing: -0.02em
+  line-height: 1.3em
+  text-shadow: 0 3px 0 #000
+  @media phone
+    font-size: 2.8em
+  @media tablet
+    font-size: 4em
+  &.internal
+    margin-top: .8em
+
+.header-description
+  color: #ddd
+  font-size: 1.6em
+  margin: 0
+  letter-spacing: 0.02em
+  @media phone
+    font-size: 1.2em
+    margin: 0 1em
+
+// Sections
+.section
+  padding: 2em 0
+
+.section-type-artworks
+  background: #fff
+
+.section-title
+  font-size: 4em
+  font-weight: 900
+  margin: 0
+  letter-spacing: -0.03em
+  text-align: center
+  color: color-primary
+  span
+    border-bottom: 3px solid
+
+// Artworks list
+.artworks-list
+  margin: 0
+  padding: 0
+
+.artworks-item
+  width: 24%
+  display: inline-block
+  padding: 0 1em 0 0
+  @media phone
+    width: 100%
+    padding: 0
+    text-align: center
+  @media tablet
+    width: 49%
+    padding: 0 .1em 0 0
+  img
+    max-width: 100%
+
+// Header Internal
+.header-internal
+  position: relative
+  overflow: auto
+  min-height: 250px
+  background-size: cover
+  background-repeat: no-repeat
+  text-align: center
+  background-color: #333
+  background-position: left center
+  @media phone
+    height: 100px
+    min-height: 100px
+  @media tablet
+    height: 150px
+    min-height: 150px
 // Banner Home
 .banner-home
   position: relative
   overflow: auto
-  h1
-    color: #fff
-    font-size: 7em
-    font-weight: 900
-    margin: 1.5em 0 0 0
-    letter-spacing: -0.02em
-    line-height: 1.3em
-    text-shadow: 0 3px 0 #000
-  p
-    color: #ddd
-    font-size: 1.6em
-    margin: 0
-    letter-spacing: 0.02em
   li
     list-style: none
   ul
@@ -119,8 +273,8 @@ h1, h2, h3, h4, h5, h6
         height: 250px
         min-height: 250px
       @media tablet
-        height: 350px
-        min-height: 350px
+        height: 330px
+        min-height: 330px
   .dots
     position: absolute
     left: 0
@@ -143,3 +297,57 @@ h1, h2, h3, h4, h5, h6
       &.active
         background: #fff
         opacity: 1
+
+// Footer
+.footer
+  height: 2em
+  background: #fff
+  width: 100%
+
+// Vedder no Brasil
+.announce
+  display: table
+  width: 100%
+  border: 1px solid #ddd
+  padding: 1em .1em
+  margin: 2em 0
+  .col4
+    position: relative
+    padding-left: 7em
+    @media tablet
+      padding-left: 5em
+    @media phone
+      padding-left: 4.6em
+
+.icon-announce
+  position: absolute
+  left: .7em
+  top: .3em
+  color: color-comp
+  font-size: 3em
+  @media tablet
+    font-size: 2.4em
+  @media phone
+    font-size: 2em
+    top: .4em
+
+.title-event
+  display: block
+  color: lighten(color-primary, 20%)
+  font-size: 1.6em
+  font-weight: bold
+  margin: .5em 0 0 0
+  .success
+    background: color-success
+    color: #fff
+    font-size: .9em
+    padding: 0 .5em
+
+@css {
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+      font-family: 'FontAwesome';
+      src: url('../fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg');
+    }
+  }
+}
