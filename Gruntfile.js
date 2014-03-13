@@ -139,10 +139,12 @@ module.exports = function(grunt) {
         },
 
         // TASK: Clean 'dist' folder
-        clean: [
-            '<%= config.dist %>/**/*.{html,xml}',
-            '<%= config.dist %>/assets/js/all.js'
-        ]
+        clean: {
+            all: [
+                '<%= config.dist %>/**/*.{html,xml}',
+                '<%= config.dist %>/assets/js/all.js'
+            ]
+        }
 
     });
     
@@ -155,7 +157,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.registerTask('server', [
-        'clean',
+        'clean:all',
         'concat',
         'stylus',
         'assemble',
