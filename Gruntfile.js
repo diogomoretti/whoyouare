@@ -98,22 +98,42 @@ module.exports = function(grunt) {
         // TASK: Assemble
         assemble: {
             options: {
+                flatten: true,
                 helpers: ['<%= config.src %>/helpers/*.js'],
+                assets: '<%= config.dist %>/assets',
+                partials: '<%= config.src %>/templates/partials/**/*.hbs',
+                plugins: ['assemble-contrib-permalinks'],
+                data: '<%= config.src %>/data/*.{json,yml}',
                 permalinks: {
                     preset: 'pretty'
                 }
             },
             pages: {
                 options: {
-                    flatten: true,
-                    assets: '<%= config.dist %>/assets',
                     layout: '<%= config.src %>/templates/layouts/default.hbs',
-                    data: '<%= config.src %>/data/*.{json,yml}',
-                    partials: '<%= config.src %>/templates/partials/**/*.hbs',
-                    plugins: ['assemble-contrib-permalinks','assemble-contrib-sitemap'],
+                    plugins: ['assemble-contrib-sitemap']
                 },
                 files: {
                     '<%= config.dist %>/': ['<%= config.src %>/templates/pages/*.hbs']
+                }
+            },
+            internals: {
+                options: {
+                    layout: '<%= config.src %>/templates/layouts/internal.hbs',
+                },
+                files: {
+                    '<%= config.dist %>/': ['<%= config.src %>/content/internal/*.{hbs,md,html}']
+                }
+            },
+            artworks: {
+                options: {
+                    layout: '<%= config.src %>/templates/layouts/internal.hbs',
+                    permalinks: {
+                        structure: ':year/:basename',
+                    },
+                },
+                files: {
+                    '<%= config.dist %>/artworks/': ['<%= config.src %>/content/artworks/**/*.{hbs,md,html}']
                 }
             }
         },
